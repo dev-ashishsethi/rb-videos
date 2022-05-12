@@ -1,0 +1,27 @@
+.explore-filters{
+    color: var(--white);
+    margin-right: 1rem;
+    border-color: var(--white);
+    border-radius: 10px;
+    padding-block: 8px;
+    border: 1px solid ;
+    padding-inline:8px
+}
+.explore-checkbox{
+    appearance: none;
+}
+
+.explore-checkbox:checked +.explore-filters{
+background-color: var(--red);
+}
+
+.explore-page{
+    margin-top: 1rem;
+}
+
+.video-listing{
+    display: flex;
+    flex-wrap: wrap;
+    gap:1rem;
+    margin-top: 2.5rem;
+}

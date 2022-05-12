@@ -1,51 +1,82 @@
-.App {
-  text-align: center;
-}
+@import url("https://r-and-b-ui.netlify.app/component.css");
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.layout-container {
+  display: grid;
+  grid-template-areas:
+    "nav nav"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: 0.6fr 2.4fr;
+  max-width: 1380px;
+  margin: auto;
 }
-
-.App-header {
-  background-color: #22201c;
-  min-height: 100vh;
+.videos-search {
+  width: 30rem;
+  height: 2rem;
+  align-self: center;
+  grid-area: nav1;
+}
+.navbar{
+  grid-area: nav;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-.brand-title {
-  font-size: 3rem;
-  color: #d9d9d9;
-}
-
-.brand-title span {
-  color: #ffde59;
-}
-
-.brand-description {
+.profile{
+  margin-left: 1rem;
+  background-color: transparent;
+  color: var(--white);
   font-size: 1.4rem;
 }
-
-.links {
-  display: flex;
+.profile-btn{
+  margin-left: 1rem;
+  border: none;
+  background-color: transparent;
+}
+.profile-section{
+  margin: 8px 1rem 0px 1rem;
+}
+.profile-options{
+  display: none;
+  
+}
+.profile-btn:focus div{
+  display: block;
+  position: absolute;
+  top: 3rem;
+}
+.profile-options>ul{
+  list-style-type: none;
+  text-align: left;
+  /* padding: 8px; */
+  padding: 0px;
+  margin: 0px;
+  background-color: var(--white);
+}
+.profile-options>ul>li{
+  background-color: var(--white);
+  padding: 8px;
+  cursor: pointer;
 }
 
-.links a {
-  color: #d9d9d9;
-  font-size: 1.2rem;
-  margin: 1rem;
+.profile-options>ul>li:hover{
+  background-color: var(--red);
+  color: var(--white);
+  padding: 8px;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.sidebar-container {
+  list-style: none;
+  padding-left:0px;
+}
+
+.sidebar-items {
+  margin-bottom: 2rem;
+  font-size: x-large;
+}
+.sidebar-icons {
+  color: var(--white);
 }
