@@ -1,6 +1,5 @@
 @import url("https://r-and-b-ui.netlify.app/component.css");
 
-
 .layout-container {
   display: grid;
   grid-template-areas:
@@ -17,36 +16,36 @@
   align-self: center;
   grid-area: nav1;
 }
-.navbar{
+.navbar {
   grid-area: nav;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.profile{
+.profile {
   margin-left: 1rem;
   background-color: transparent;
   color: var(--white);
   font-size: 1.4rem;
 }
-.profile-btn{
+.profile-btn {
   margin-left: 1rem;
   border: none;
   background-color: transparent;
 }
-.profile-section{
+
+.profile-section {
   margin: 8px 1rem 0px 1rem;
 }
-.profile-options{
+.profile-options {
   display: none;
-  
 }
-.profile-btn:focus div{
+.profile-btn:focus div {
   display: block;
   position: absolute;
   top: 3rem;
 }
-.profile-options>ul{
+.profile-options > ul {
   list-style-type: none;
   text-align: left;
   /* padding: 8px; */
@@ -54,13 +53,13 @@
   margin: 0px;
   background-color: var(--white);
 }
-.profile-options>ul>li{
+.profile-options > ul > li {
   background-color: var(--white);
   padding: 8px;
   cursor: pointer;
 }
 
-.profile-options>ul>li:hover{
+.profile-options > ul > li:hover {
   background-color: var(--red);
   color: var(--white);
   padding: 8px;
@@ -70,7 +69,7 @@
 }
 .sidebar-container {
   list-style: none;
-  padding-left:0px;
+  padding-left: 0px;
 }
 
 .sidebar-items {

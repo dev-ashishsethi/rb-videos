@@ -6,41 +6,35 @@ export function Sidebar() {
       <ul className="sidebar-container">
         <Link to="/">
           <li className="sidebar-items">
-            <All.IonHome />
-             {" "}Home
+            <All.IonHome /> Home
           </li>
         </Link>
         <Link to="/explore">
           <li className="sidebar-items">
-            <All.ZondiconsExplore /> 
-            {" "}Explore
+            <All.ZondiconsExplore /> Explore
           </li>
         </Link>
         <a href="">
           <li className="sidebar-items">
-            <All.DashiconsPlaylistVideo /> 
-            {" "}Playlist
+            <All.DashiconsPlaylistVideo /> Playlist
           </li>
         </a>
-        <a href="./Trash/Trash.html">
+        <Link to={"/likedVideos"}>
           <li className="sidebar-items">
-            <All.BxsLike /> 
-            {" "}Liked Videos
+            <All.BxsLike /> Liked Videos
           </li>
-        </a>
+        </Link>
         <a href="">
           <li className="sidebar-items">
-            <All.IcBaselineWatchLater /> 
-            {" "}Watch Later
+            <All.IcBaselineWatchLater /> Watch Later
           </li>
         </a>
-        <a href="">
+        <Link to={"/history"}>
           <li className="sidebar-items">
-            <All.FontistoHistory /> 
-            {" "}History
+            <All.FontistoHistory /> History
           </li>
-        </a>
-    </ul>
+        </Link>
+      </ul>
     </section>
   );
 }

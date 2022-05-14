@@ -15,8 +15,12 @@ export function VideoProvider({children}) {
         views:0,
         date:""
     });
+    const [likedVideos, setLikedVideos] = useState([]);
+    const [watchLater, setWatchLaterVideos] = useState([]);
+    const [history, setHistoryVideos] = useState([]);
     const [categories,categoryDispatch]=useReducer(categoryReducer,{category:[]});
     const [videos,setVideos]=useState([]);
+    const [historyPage, setHistoryPage] = useState(false);
     return (
       <VideoContext.Provider
         value={{
@@ -26,6 +30,14 @@ export function VideoProvider({children}) {
           setVideoData,
           videos,
           setVideos,
+          likedVideos,
+          setLikedVideos,
+          watchLater,
+          setWatchLaterVideos,
+          history,
+          setHistoryVideos,
+          historyPage,
+          setHistoryPage,
         }}
       >
         {children}
