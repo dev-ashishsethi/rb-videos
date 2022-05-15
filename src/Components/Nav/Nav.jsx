@@ -33,7 +33,7 @@ export function Nav() {
           </div>
         </button>
       ) : (
-        <Link to="/signIn" className="login-btn">
+        <Link to="/SignIn" className="login-btn">
           {" "}
           <button className="btn btn-primary login-btn" onClick={LoginHandler}>
             Log In

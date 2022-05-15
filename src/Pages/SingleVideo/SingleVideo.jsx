@@ -7,17 +7,42 @@ import "./singleVideo.css";
 import * as All from "../../icons/icons";
 import { useVideo } from "../../Context/VideoContext";
 import { viewsConvert } from "../../Utils/ViewsConvert";
+import { checkInLikedList, checkInList } from "../../Utils/checkInLikedList";
+import { addLikedVideo } from "../../Utils/Likedvideos/addLikedVideo";
+import { revomeLikedVideo } from "../../Utils/Likedvideos/revomeLikedVideo";
+import { useAuth } from "../../Context/loginContext";
+import { adddToHistory } from "../../Utils/Historyvideos/adddToHistory";
 
 export function SingleVideo() {
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState("");
   const { customAxios } = useAxios();
-  const { video } = useVideo();
+  const {
+    video,
+    likedVideos,
+    setLikedVideos,
+    watchLater,
+    setWatchLaterVideos,
+    history,
+    setHistoryVideos,
+    
+  } = useVideo();
   const [showDescription, setShowDescription] = useState(false);
 
   const showMore=()=>setShowDescription(!showDescription);
-  
+  const {token}=useAuth();
 
+  function toggleLike(singleVideo) {
+    console.log("liked videos",likedVideos);
+    checkInList(singleVideo, likedVideos)
+      ? revomeLikedVideo(customAxios,setLikedVideos, singleVideo)
+      : addLikedVideo(customAxios, setLikedVideos, singleVideo);
+  }
+
+  
+  const playHandler=()=>{
+    adddToHistory(customAxios, setHistoryVideos,singleVideo);
+  }
   useEffect(() => {
     (async () => {
       const res = await customAxios({
@@ -34,6 +59,7 @@ export function SingleVideo() {
       <ReactPlayer
         url={"https://www.youtube.com/watch?v=" + singleVideo?.id}
         controls
+        onPlay={playHandler}
         width={"100%"}
       />
       <h2>{singleVideo?.snippet?.title}</h2>
@@ -41,7 +67,10 @@ export function SingleVideo() {
         <p>{singleVideo?.snippet?.channelTitle}</p>
 
         <div className="video-btn-section">
-          <button className="btn video-btn">
+          <button
+            className="btn video-btn"
+            onClick={() => toggleLike(singleVideo)}
+          >
             <All.BxsLike /> Like
           </button>
           <button className="btn video-btn">
@@ -55,12 +84,16 @@ export function SingleVideo() {
       <p>{viewsConvert(singleVideo?.statistics?.viewCount)} Views</p>
       <p>Description:</p>
       <p
-        className={showDescription ? "video-description-visible" : "video-description-hide"}
+        className={
+          showDescription
+            ? "video-description-visible"
+            : "video-description-hide"
+        }
       >
         {singleVideo?.snippet?.description}
       </p>
       <button className="btn show-more-btn" onClick={showMore}>
-        {showDescription?"Show Less":"Show More"}
+        {showDescription ? "Show Less" : "Show More"}
       </button>
     </section>
   );

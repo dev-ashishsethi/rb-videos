@@ -7,10 +7,26 @@
   transition: 0.2s ease-in-out;
   transform: scale(1.06);
 }
+.btn-section{
+      display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: transparent;
+    border-radius: 1rem;
+}
 .video-title {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+}
+.delete-btn {
+  color: var(--white);
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  margin-top: 1rem;
+}
+.delete-btn:active{
+  opacity: 0.5;
 }
 .video-duration {
   position: absolute;

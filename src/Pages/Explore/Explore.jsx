@@ -8,10 +8,13 @@ import { useVideo } from "../../Context/VideoContext";
 import { useAxios } from "../../customHooks/useAxios";
 import { categoryFilter } from "../../Utils/categoryFilter";
 import "./Explore.css";
+
+
 export function Explore() {
-  const { categories, videos, setVideos } = useVideo();
+  const { categories, videos, setVideos, setHistoryPage } = useVideo();
   const { customAxios } = useAxios();
   useEffect(() => {
+    setHistoryPage(false);
     (async () => {
       try {
         const { response } = await customAxios({
@@ -23,7 +26,7 @@ export function Explore() {
           categories.category,
           customAxios
         );
-        
+
         filteredData.then((data) => setVideos(data));
       } catch (error) {
         console.error(error);
@@ -35,7 +38,7 @@ export function Explore() {
       <Filter />
       <section className="video-listing">
         {videos?.map((video) => (
-          <Link to={`/video/${video.id}`}>
+          <Link to={`/video/${video.id}`} key={video.id}>
             {" "}
             <Card data={video} key={video.id} />
           </Link>

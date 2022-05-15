@@ -36,7 +36,6 @@ export function Home() {
       >
         Comedy
       </div>
-
       
         <div
           className="category-cards"
