@@ -14,21 +14,21 @@ export function Sidebar() {
             <All.ZondiconsExplore /> Explore
           </li>
         </Link>
-        <a href="">
+       <Link to={"/playlist"}>
           <li className="sidebar-items">
             <All.DashiconsPlaylistVideo /> Playlist
           </li>
-        </a>
+        </Link>
         <Link to={"/likedVideos"}>
           <li className="sidebar-items">
             <All.BxsLike /> Liked Videos
           </li>
         </Link>
-        <a href="">
+        <Link to={"/watchLater"}>
           <li className="sidebar-items">
             <All.IcBaselineWatchLater /> Watch Later
           </li>
-        </a>
+        </Link>
         <Link to={"/history"}>
           <li className="sidebar-items">
             <All.FontistoHistory /> History

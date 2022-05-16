@@ -15,9 +15,7 @@ export async function categoryFilter(videos, category, customAxios) {
       categoryList.includes(Number(video.snippet.categoryId))
     );
 
-    console.log("category list", categoryList);
-    console.log("video list", videoList);
-    console.log("video list", videoList.length);
+   
 
     return videoList.length > 0 ? videoList : videos;
     

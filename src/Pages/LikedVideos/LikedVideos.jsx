@@ -6,8 +6,13 @@ import { useAxios } from "../../customHooks/useAxios";
 
 export function LikedVideos() {
   const { customAxios } = useAxios();
-  const { likedVideos } = useVideo();
+  const { likedVideos, setHistoryPage, setPlaylistPage } = useVideo();
   
+  useEffect(()=>{
+    setHistoryPage(false);
+    setPlaylistPage(false);
+  },[]);
+
   return (
     <div className="explore-page">
      <h1>Liked Videos</h1>
