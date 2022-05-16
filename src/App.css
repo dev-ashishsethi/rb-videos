@@ -32,8 +32,43 @@
   margin-left: 1rem;
   border: none;
   background-color: transparent;
+  position: relative;
+  z-index: 99;
 }
+.playlist-cards{
+    background-color: rgb(29 29 29);
+    color: var(--white);
+    display: inline-block;
+    border-radius: 10px;
+    padding: 4.6rem;
+    margin: 2rem;
+    margin-left: 0px;
+    width: 14.2rem;
+    border: 1px solid rgb(29 29 29);
+    font-size: 1.3rem;
+    
+}
+.playlist-page-container{
+  position: relative;
+  background-color: rgb(29 29 29);
+    color: var(--white);
+    display: inline-block;
+    border-radius: 10px;
+    margin: 2rem;
+    margin-left: 0px;
+    width: 14.2rem;
+    border: 1px solid rgb(29 29 29);
+    font-size: 1.3rem;
+}
+.playlist-cards:active{
+    border-color: var(--white);
+}
+.delete-btn-on-playlist{
+position: absolute;
+right: 1rem;
+top: 1rem;
 
+}
 .profile-section {
   margin: 8px 1rem 0px 1rem;
 }
@@ -57,6 +92,7 @@
   background-color: var(--white);
   padding: 8px;
   cursor: pointer;
+  width: 4rem;
 }
 
 .profile-options > ul > li:hover {

@@ -5,10 +5,12 @@ import { useAxios } from "../../customHooks/useAxios";
 import { clearAllHistory } from "../../Utils/Historyvideos/clearAllHistory";
 
 export function History() {
-  const { history, setHistoryVideos, setHistoryPage } = useVideo();
+  const { history, setHistoryVideos, setHistoryPage,setWatchLaterPage,setPlaylistPage } = useVideo();
   const { customAxios } = useAxios();
   useEffect(() => {
     setHistoryPage(true);
+    setWatchLaterPage(false);
+    setPlaylistPage(false);
   }, []);
   return (
     <div className="explore-page">
