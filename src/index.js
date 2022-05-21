@@ -13,6 +13,7 @@ ReactDOM.render(
   <React.StrictMode>
     <Router>
       <LoginProvider>
+        
         <VideoProvider>
           <App />
         </VideoProvider>
