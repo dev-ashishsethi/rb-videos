@@ -1,4 +1,4 @@
-## R&B Videos App using Smash UI , React.js and MockBee (MockBackend)
+## R&B Videos App using R&B UI , React.js and MockBee (MockBackend)
 
 <div align="center">
 
