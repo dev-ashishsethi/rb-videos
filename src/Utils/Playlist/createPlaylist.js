@@ -1,3 +1,5 @@
+import { Toast } from "../../Components/Toast/Toast";
+
 export async function createPlaylist(customAxios, setPlaylists, playlistObj) {
   try {
     const res = await customAxios({
@@ -6,7 +8,8 @@ export async function createPlaylist(customAxios, setPlaylists, playlistObj) {
       data: { playlist: playlistObj },
     });
     setPlaylists(res.response.playlists);
+    Toast("success", "Playlist created successfully");
   } catch (error) {
-    console.log(error);
+    Toast("error",error);
   }
 }

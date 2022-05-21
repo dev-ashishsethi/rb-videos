@@ -14,28 +14,36 @@ import { WatchLater } from "./Pages/WatchLater/WatchLater";
 import { PlaylistPage } from "./Pages/Playlist/PlaylistPage";
 import { SinglePlaylistPage } from "./Pages/SinglePlaylist/SinglePlaylist";
 import { Profile } from "./Pages/Profile/Profile";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const { login } = useAuth();
 
   return (
-    <div className="layout-container">
-      <Nav />
-      <Sidebar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/video/:videoId" element={<SingleVideo />} />
-        <Route path="/SignIn" element={<SignIn />} />
-        <Route path="/signUp" element={<SignUp />} />
-        <Route path="/likedVideos" element={<LikedVideos />} />
-        <Route path="/history" element={<History />} />
-        <Route path="/watchLater" element={<WatchLater />} />
-        <Route path="/playlist" element={<PlaylistPage />} />
-        <Route path="/playlist/:playlistId" element={<SinglePlaylistPage />} />
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </div>
+    <>
+      <ToastContainer />
+
+      <div className="layout-container">
+        <Nav />
+        <Sidebar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/video/:videoId" element={<SingleVideo />} />
+          <Route path="/SignIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/likedVideos" element={<LikedVideos />} />
+          <Route path="/history" element={<History />} />
+          <Route path="/watchLater" element={<WatchLater />} />
+          <Route path="/playlist" element={<PlaylistPage />} />
+          <Route
+            path="/playlist/:playlistId"
+            element={<SinglePlaylistPage />}
+          />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 

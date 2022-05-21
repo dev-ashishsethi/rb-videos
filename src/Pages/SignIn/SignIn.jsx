@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import "./SignIn.css";
 import axios from "axios";
 import { useAuth } from "../../Context/loginContext";
+import { Toast } from "../../Components/Toast/Toast";
 
 export function SignIn() {
   const { login, setLogin } = useAuth();
@@ -25,6 +26,7 @@ export function SignIn() {
       if (response.status === 200 || response.status === 201){
         localStorage.setItem("login", response.data.encodedToken);
         setLogin(true);
+        Toast("success","Signed in successfully")
         navigate("/");
       }
     } catch (error) {

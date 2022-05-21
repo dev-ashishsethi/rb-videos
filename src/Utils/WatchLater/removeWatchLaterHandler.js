@@ -1,3 +1,5 @@
+import { Toast } from "../../Components/Toast/Toast";
+
 export async function removeWatchLaterHandler(
   customAxios,
   setWatchLaterVideos,
@@ -8,4 +10,5 @@ export async function removeWatchLaterHandler(
       url: `/api/user/watchlater/${singleVideo.id}`,
     });
     setWatchLaterVideos(res.response.watchlater);
+    Toast("success", "Video removed from watch later successfully");
 }

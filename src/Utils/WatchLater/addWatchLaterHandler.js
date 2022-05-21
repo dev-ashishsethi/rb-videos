@@ -1,3 +1,5 @@
+import { Toast } from "../../Components/Toast/Toast";
+
 export async function addWatchLaterHandler(
   customAxios,
   setWatchLaterVideos,
@@ -10,6 +12,7 @@ export async function addWatchLaterHandler(
       video: singleVideo,
     },
   });
-  console.log(res.response.watchlater);
+  
   setWatchLaterVideos(res.response.watchlater);
+  Toast("success", "Video added to watch later");
 }

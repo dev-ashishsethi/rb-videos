@@ -1,3 +1,5 @@
+import { Toast } from "../../Components/Toast/Toast";
+
 export async function deleteVideoFromPlaylist(
   customAxios,
   setPlaylists,
@@ -19,7 +21,8 @@ export async function deleteVideoFromPlaylist(
         }
       })
     );
+    Toast("success", "Deleted video from playlist");
   } catch (error) {
-    console.error(error);
+    Toast("error", error);
   }
 }

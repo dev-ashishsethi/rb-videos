@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useReducer, useState } from "react";
 import { Link } from "react-router-dom";
+import { Toast } from "../../Components/Toast/Toast";
 import { useAuth } from "../../Context/loginContext";
 import { IcBaselineRemoveRedEye } from "../../icons/icons";
 import { signUpDetails } from "../../Utils/signUpDetails";
@@ -25,15 +26,16 @@ export function SignUp() {
     e.preventDefault();
     try {
       const response = await axios.post("api/auth/signup", state);
-      console.log("response", response);
+    
       if (response.status >= 200 && response.status < 299) {
         const verificationToken = response.data.encodedToken;
         localStorage.setItem("login", verificationToken);
         const userData = response.data.createdUser;
         const userId = response.data.createdUser._id;
         localStorage.setItem("userId", userId);
-        console.log("userdata", userData);
+        
         setLogin(true);
+        Toast("success", "Sign Up successfully");
       }
     } catch (error) {
       console.error("sign up error", error);

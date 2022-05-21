@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Toast } from "../../Components/Toast/Toast";
 
 export async function revomeLikedVideo(
   customAxios,
@@ -14,7 +15,8 @@ export async function revomeLikedVideo(
     setLikedVideos((likedVideo) =>
       likedVideo.filter((video) => video.id !== singleVideo.id)
     );
+    Toast("success", "Video removed from liked successfully");
   } catch (error) {
-    console.error(error);
+    Toast("error", error);
   }
 }

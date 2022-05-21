@@ -1,3 +1,5 @@
+import { Toast } from "../../Components/Toast/Toast";
+
 export async function addVideoToPlaylist(
   customAxios,
   playlistId,
@@ -13,7 +15,7 @@ export async function addVideoToPlaylist(
     data: { video: newVideo },
   });
 
-  console.log("add to playlist", res);
+  
 
   setPlaylists((playlists) =>
     playlists.map((playlist) => {
@@ -25,4 +27,5 @@ export async function addVideoToPlaylist(
       }
     })
   );
+  Toast("success", "Video added to Playlist");
 }

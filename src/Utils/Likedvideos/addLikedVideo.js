@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Toast } from "../../Components/Toast/Toast";
 
 export async function addLikedVideo(customAxios, setLikedVideos, singleVideo) {
  
@@ -10,7 +11,8 @@ export async function addLikedVideo(customAxios, setLikedVideos, singleVideo) {
     });
 
     setLikedVideos((likedVideo) => [ ...res?.response?.likes]);
+    Toast("success", "Video added to liked videos");
   } catch (error) {
-    console.error(error);
+    Toast("error", error);
   }
 }
