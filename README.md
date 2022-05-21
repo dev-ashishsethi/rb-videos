@@ -25,6 +25,10 @@ R&B Videos - Video Library App using [R&B Videos](https://r-and-b-ui.netlify.app
 ## Video Demo of R&B Videos
 
 
+https://user-images.githubusercontent.com/89299065/169648179-02a039e8-b5fd-422e-95fd-5c7c611496b2.mp4
+
+
+
 ---
 
 ## Quick Start
