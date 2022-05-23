@@ -3,11 +3,15 @@ import { useState, useEffect } from "react";
 import { useAxios } from "../../customHooks/useAxios";
 import { Card } from "../../Components/Card/Card";
 import { useVideo } from "../../Context/VideoContext";
+import { useDispatch, useSelector } from "react-redux";
+import { historyAction, playlistAction } from "../../store";
 
 export function SinglePlaylistPage() {
   const { playlistId } = useParams();
   const [singlePlaylist, setSinglePlaylist] = useState({});
-  const { playlistPage, setPlaylistPage, playlists } = useVideo();
+  const playlistDispatch = useDispatch();
+  const historyDispatch = useDispatch();
+  
   const { customAxios } = useAxios();
   useEffect(() => {
     (async () => {
@@ -16,7 +20,8 @@ export function SinglePlaylistPage() {
         url: `/api/user/playlists/${playlistId}`,
       });
       setSinglePlaylist(res.response.playlist);
-      setPlaylistPage(true);
+      historyDispatch(historyAction.setHistoryPage(false));
+      playlistDispatch(playlistAction.singlePlaylist(true));
     })();
   }, [singlePlaylist]);
   return (

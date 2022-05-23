@@ -1,9 +1,9 @@
-import axios from "axios";
 import { Toast } from "../../Components/Toast/Toast";
+import { likedAction } from "../../store";
 
 export async function revomeLikedVideo(
   customAxios,
-  setLikedVideos,
+  likedDispatch,
   singleVideo
 ) {
   try {
@@ -12,9 +12,9 @@ export async function revomeLikedVideo(
       url: `/api/user/likes/${singleVideo.id}`,
     });
 
-    setLikedVideos((likedVideo) =>
-      likedVideo.filter((video) => video.id !== singleVideo.id)
-    );
+    likedDispatch(likedAction.removeLikedVideo(singleVideo.id));
+
+
     Toast("success", "Video removed from liked successfully");
   } catch (error) {
     Toast("error", error);

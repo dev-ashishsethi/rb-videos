@@ -1,3 +1,4 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { useVideo } from "../../Context/VideoContext";
 import { useAxios } from "../../customHooks/useAxios";
@@ -12,25 +13,21 @@ import { addWatchLaterHandler } from "../../Utils/WatchLater/addWatchLaterHandle
 import { removeWatchLaterHandler } from "../../Utils/WatchLater/removeWatchLaterHandler";
 import "./Card.css";
 export function Card({ data, playlistId }) {
-  const {
-    historyPage,
-    setHistoryPage,
-    playlistPage,
-    setPlaylistPage,
-    setHistoryVideos,
-    watchLaterPage,
-    setWatchLaterPage,
-    watchLater,
-    setWatchLaterVideos,
-    setPlaylists,
-  } = useVideo();
+ 
   const { customAxios } = useAxios();
-
+  const { playlists, playlistPage } = useSelector((state) => state.playlist);
+  const playlistDispatch = useDispatch();
+  const { historyPage } = useSelector((state) => state.history);
+  const { watchLater } = useSelector((state) => state.watchLater);
+ 
+  const watchLaterDispatch = useDispatch();
+  const historyDispatch = useDispatch();
   function toggleWatchLater(data) {
     checkInList(data, watchLater)
-      ? removeWatchLaterHandler(customAxios, setWatchLaterVideos, data)
-      : addWatchLaterHandler(customAxios, setWatchLaterVideos, data);
+      ? removeWatchLaterHandler(customAxios, watchLaterDispatch, data)
+      : addWatchLaterHandler(customAxios, watchLaterDispatch, data);
   }
+
   return (
     <div className="video-card" title={data.snippet.title}>
       <Link to={`/video/${data.id}`}>
@@ -67,15 +64,22 @@ export function Card({ data, playlistId }) {
           <RiDeleteBinLine
             className="delete-btn"
             onClick={() =>
-              deleteVideoFromPlaylist(customAxios, setPlaylists,playlistId, data.id)
+              deleteVideoFromPlaylist(
+                customAxios,
+                playlistDispatch,
+                playlistId,
+                data.id,
+                playlists
+              )
             }
+            title="remove from playlist"
           />
         ) : null}
         {historyPage ? (
           <RiDeleteBinLine
             className="delete-btn"
             onClick={() =>
-              deleteFromHistory(customAxios, setHistoryVideos, data.id)
+              deleteFromHistory(customAxios, historyDispatch, data.id)
             }
           />
         ) : null}
