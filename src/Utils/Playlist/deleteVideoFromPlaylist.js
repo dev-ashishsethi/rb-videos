@@ -26,16 +26,7 @@ export async function deleteVideoFromPlaylist(
         })
       )
     );
-    // setPlaylists((playlists) =>
-    //   playlists.map((playlist) => {
-    //     if (playlist._id === res.response.playlist._id) {
-    //       playlist.videos = res.response.playlist.videos;
-    //       return playlist;
-    //     } else {
-    //       return playlist;
-    //     }
-    //   })
-    // );
+
     Toast("success", "Deleted video from playlist");
   } catch (error) {
     Toast("error", error);

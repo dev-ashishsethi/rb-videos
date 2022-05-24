@@ -31,19 +31,10 @@ export async function addVideoToPlaylist(
         })
       )
     );
+    Toast("success", "Video added to Playlist");
   } catch (error) {
     Toast("error", error);
   }
 
-  // setPlaylists((playlists) =>
-  //   playlists.map((playlist) => {
-  //     if (playlist._id === res.response.playlist._id) {
-  //       playlist.videos = res.response.playlist.videos;
-  //       return playlist;
-  //     } else {
-  //       return playlist;
-  //     }
-  //   })
-  // );
-  Toast("success", "Video added to Playlist");
+  
 }
