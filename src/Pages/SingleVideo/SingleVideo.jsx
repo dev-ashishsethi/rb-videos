@@ -16,31 +16,32 @@ import { removeWatchLaterHandler } from "../../Utils/WatchLater/removeWatchLater
 import { addWatchLaterHandler } from "../../Utils/WatchLater/addWatchLaterHandler";
 import { Playlist } from "../../Components/Playlist/Playlist";
 import { useAuth } from "../../Context/loginContext";
+import { useDispatch, useSelector } from "react-redux";
 
 export function SingleVideo() {
   const { videoId } = useParams();
   const [singleVideo, setSingleVideo] = useState("");
   const { customAxios } = useAxios();
   const { login } = useAuth();
-  const navigate=useNavigate()
-  const {
-    video,
-    likedVideos,
-    setLikedVideos,
-    watchLater,
-    setWatchLaterVideos,
-    history,
-    setHistoryVideos,
-  } = useVideo();
+  const navigate = useNavigate();
+  
   const [playlistModal, setPlaylistModal] = useState(false);
   const [showDescription, setShowDescription] = useState(false);
 
   const showMore = () => setShowDescription(!showDescription);
 
+  const likedVideos = useSelector((state) => state.likedVideos);
+  const likedDispatch = useDispatch();
+
+  const { watchLater } = useSelector((state) => state.watchLater);
+  const watchLaterDispatch = useDispatch();
+  const historyDispatch = useDispatch();
   function toggleLike(singleVideo) {
-    login?checkInList(singleVideo, likedVideos)
-      ? revomeLikedVideo(customAxios, setLikedVideos, singleVideo)
-      : addLikedVideo(customAxios, setLikedVideos, singleVideo):navigate("/signIn")
+    login
+      ? checkInList(singleVideo, likedVideos)
+        ? revomeLikedVideo(customAxios, likedDispatch, singleVideo)
+        : addLikedVideo(customAxios, likedDispatch, singleVideo)
+      : navigate("/signIn");
   }
 
   function playListHandler() {
@@ -53,12 +54,12 @@ export function SingleVideo() {
   function toggleWatchLater(singleVideo) {
     login
       ? checkInList(singleVideo, watchLater)
-        ? removeWatchLaterHandler(customAxios, setWatchLaterVideos, singleVideo)
-        : addWatchLaterHandler(customAxios, setWatchLaterVideos, singleVideo)
+        ? removeWatchLaterHandler(customAxios, watchLaterDispatch, singleVideo)
+        : addWatchLaterHandler(customAxios, watchLaterDispatch, singleVideo)
       : navigate("/signIn");
   }
   const playHandler = () => {
-    adddToHistory(customAxios, setHistoryVideos, singleVideo);
+    adddToHistory(customAxios, historyDispatch, singleVideo);
   };
   useEffect(() => {
     (async () => {

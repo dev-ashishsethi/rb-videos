@@ -1,18 +1,21 @@
+import { useDispatch, useSelector } from "react-redux";
 import { useVideo } from "../../Context/VideoContext";
 import { useAxios } from "../../customHooks/useAxios";
+import { playlistAction } from "../../store";
 import { addVideoToPlaylist } from "../../Utils/Playlist/addVideoToPlaylist";
 import { createPlaylist } from "../../Utils/Playlist/createPlaylist";
-
 export function Playlist({ func, video }) {
-  const { playlists, setPlaylists, playlistObj, setPlayistObj } = useVideo();
+
   const { customAxios } = useAxios();
+  const { playlists, playlistObj } = useSelector((state) => state.playlist);
+  const playlistDispatch = useDispatch();
+
   function playlistInputHandler(e) {
-    setPlayistObj((playlistObj) => ({
-      ...playlistObj,
-      [e.target.name]: e.target.value,
-    }));
+    playlistDispatch(
+      playlistAction.setPlaylistObj({ [e.target.name]: e.target.value })
+    );
   }
-  
+
   return (
     <div className="playlist-container">
       <div className="playlist-modal">
@@ -33,7 +36,7 @@ export function Playlist({ func, video }) {
                         customAxios,
                         e.target.name,
                         playlists,
-                        setPlaylists,
+                        playlistDispatch,
                         video
                       )
                     }
@@ -67,7 +70,9 @@ export function Playlist({ func, video }) {
         </>
         <button
           className="btn btn-primary playlist-btn"
-          onClick={() => createPlaylist(customAxios, setPlaylists, playlistObj)}
+          onClick={() =>
+            createPlaylist(customAxios, playlistDispatch, playlistObj)
+          }
         >
           Create Playlist
         </button>
