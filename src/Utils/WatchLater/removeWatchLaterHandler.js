@@ -11,9 +11,10 @@ export async function removeWatchLaterHandler(
       method: "DELETE",
       url: `/api/user/watchlater/${singleVideo.id}`,
     });
-    watchLaterDispatch(
-      watchLaterAction.removeWatchLaterHandler(res.response.watchlater)
+    const watchLater = res.response.watchlater.filter(
+      (video) => video.id !== singleVideo.id
     );
+    watchLaterDispatch(watchLaterAction.removeWatchLaterHandler(watchLater));
     Toast("success", "Video removed from watch later successfully");
   } catch (error) {
     Toast("error", error);

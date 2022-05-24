@@ -18,12 +18,13 @@ export function Card({ data, playlistId }) {
   const { playlists, playlistPage } = useSelector((state) => state.playlist);
   const playlistDispatch = useDispatch();
   const { historyPage } = useSelector((state) => state.history);
-  const { watchLater } = useSelector((state) => state.watchLater);
+  const { watchLaterVideos } = useSelector((state) => state.watchLater);
  
   const watchLaterDispatch = useDispatch();
   const historyDispatch = useDispatch();
+  
   function toggleWatchLater(data) {
-    checkInList(data, watchLater)
+    checkInList(data, watchLaterVideos)
       ? removeWatchLaterHandler(customAxios, watchLaterDispatch, data)
       : addWatchLaterHandler(customAxios, watchLaterDispatch, data);
   }
@@ -45,7 +46,7 @@ export function Card({ data, playlistId }) {
         </div>
       </Link>
       <div className="btn-section">
-        {checkInList(data, watchLater) ? (
+        {checkInList(data, watchLaterVideos) ? (
           <button
             className="btn btn-primary w-100"
             onClick={() => toggleWatchLater(data)}

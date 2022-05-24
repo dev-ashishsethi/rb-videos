@@ -18,15 +18,14 @@ const likedVideosSlice = createSlice({
 
 const watchLaterSlice = createSlice({
   name: "watchLater",
-  initialState: { watchLater: [], watchLaterPage: false },
+  initialState: { watchLaterVideos: [], watchLaterPage: false },
   reducers: {
     addWatchLaterHandler(state, action) {
-      console.log(action.payload);
-      state.watchLater = action.payload;
+      state.watchLaterVideos = action.payload;
       return state;
     },
     removeWatchLaterHandler(state, action) {
-      state.watchLater = state.filter((video) => video.id !== action.payload);
+      state.watchLaterVideos = action.payload;
       return state;
     },
     watchLaterPage(state, action) {
@@ -40,7 +39,6 @@ const historySlice = createSlice({
   initialState: { historyVideos: [], historyPage: false },
   reducers: {
     adddToHistory(state, action) {
-      console.log(action.payload);
       state.historyVideos = action.payload;
       return state;
     },
@@ -64,7 +62,6 @@ const playlistSlice = createSlice({
   initialState: { playlists: [], playlistObj: {}, playlistPage: false },
   reducers: {
     createPlaylist(state, action) {
-      console.log("create playlist", action.payload);
       state.playlists = action.payload;
       return state;
     },
@@ -85,7 +82,6 @@ const playlistSlice = createSlice({
       return state;
     },
     setPlaylistObj(state, action) {
-      console.log("playlist object", action.payload);
       state.playlistObj = action.payload;
       return state;
     },
