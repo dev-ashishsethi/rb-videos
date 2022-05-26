@@ -10,7 +10,7 @@ export function History() {
 
   const { customAxios } = useAxios();
   const playlistDispatch = useDispatch();
-  const { historyVideos } = useSelector((state) => state.history);
+  const { historyVideos, historyPage } = useSelector((state) => state.history);
   const watchLaterDispatch = useDispatch();
   const historyDispatch = useDispatch();
 
@@ -18,7 +18,7 @@ export function History() {
     historyDispatch(historyAction.setHistoryPage(true));
     watchLaterDispatch(watchLaterAction.watchLaterPage(false));
     playlistDispatch(playlistAction.singlePlaylist(false));
-  }, []);
+  }, [historyPage]);
   return (
     <div className="explore-page">
       <h1>History</h1>
