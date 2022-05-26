@@ -25,14 +25,9 @@ export function Caraousel() {
     return () => clearInterval(timerId);
   }, []);
   return (
-    <section className="explore-section">
+    <section className="explore-section" onClick={() => navigate("/explore")}>
       <div className="explore-btn">
-        <button
-          className="btn btn-primary carousel-btn"
-          onClick={() => navigate("/explore")}
-        >
-          Explore Now
-        </button>
+        <button className="btn btn-primary carousel-btn">Explore Now</button>
       </div>
       <img src={carouselImage} alt={carouselName} className="explore-images" />
     </section>
